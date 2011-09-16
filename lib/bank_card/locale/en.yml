@@ -1,0 +1,6 @@
+en:
+  errors:
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      expired: "is expired"
