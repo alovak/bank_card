@@ -8,31 +8,26 @@ class CreditCard
 end
 
 describe CreditCard do
-  before do 
+  before do
     CreditCard.reset_callbacks(:validate)
   end
 
-  it "should validate number with Luhn algorithm" do
-    CreditCard.validates :number, :luhn => true
-    card = CreditCard.new
+  describe "validation" do
+    subject { CreditCard.new }
 
-    card.number = '123'
-    card.should be_invalid
-    card.errors[:number].should include("is invalid")
+    describe "number with Luhn algorithm" do
+      before { CreditCard.validates :number, :luhn => true }
 
-    card.number = '4200000000000000'
-    card.should be_valid
+      it { should_not allow_value('123').for(:number) }
+      it { should allow_value('4200000000000000').for(:number) }
+    end
+
+    describe "card expiration" do
+      before { CreditCard.validates_expiration_of :date }
+
+      it { should_not allow_value(Date.today.prev_month).for(:date) }
+      it { should allow_value(Date.today).for(:date) }
+    end
   end
 
-  it "should validate card expiration" do
-    CreditCard.validates_expiration_of :date
-    card = CreditCard.new
-  
-    card.date = Date.today.prev_month
-    card.should be_invalid
-    card.errors[:date].should include("is expired")
-
-    card.date = Date.today
-    card.should be_valid
-  end
 end
