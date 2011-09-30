@@ -2,7 +2,7 @@ module BankCard
   module Validations
     class ExpirationValidator < ActiveModel::EachValidator
       def validate_each(record, attribute, value)
-        record.errors.add(attribute, :is_expired, options) unless value && value.end_of_month.future?
+        record.errors.add(attribute, :is_expired, options) unless value && value >= Date.today
       end
     end
 
@@ -13,4 +13,3 @@ module BankCard
     end
   end
 end
-
