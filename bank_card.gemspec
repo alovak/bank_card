@@ -23,7 +23,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "guard-bundler"
   s.add_development_dependency "ruby-debug19"
-  
+  s.add_development_dependency "shoulda-matchers"
+
   s.add_runtime_dependency "activemodel"
   s.add_runtime_dependency "activesupport"
 end
