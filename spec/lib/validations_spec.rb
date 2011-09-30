@@ -8,9 +8,7 @@ class CreditCard
 end
 
 describe CreditCard do
-  before do
-    CreditCard.reset_callbacks(:validate)
-  end
+  before { CreditCard.reset_callbacks(:validate) }
 
   describe "validation" do
     subject { CreditCard.new }
@@ -26,7 +24,24 @@ describe CreditCard do
       before { CreditCard.validates_expiration_of :date }
 
       it { should_not allow_value(Date.today.prev_month).for(:date) }
-      it { should allow_value(Date.today).for(:date) }
+      it { should allow_value(Date.today.next_month).for(:date) }
+
+      context "when the validity period expires in this month" do
+        context "when now is first day of month" do
+          before { Timecop.freeze(Date.today.beginning_of_month) }
+          after  { Timecop.return }
+
+          it { should allow_value(Date.today).for(:date) }
+        end
+
+        context "when now is last day of month" do
+          before { Timecop.freeze(Date.today.end_of_month) }
+          after  { Timecop.return }
+
+          it { should allow_value(Date.today).for(:date) }
+        end
+      end
+
     end
   end
 
