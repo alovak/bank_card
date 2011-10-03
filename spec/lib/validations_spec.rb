@@ -38,7 +38,7 @@ describe CreditCard do
           before { Timecop.freeze(Date.today.end_of_month) }
           after  { Timecop.return }
 
-          it { should allow_value(Date.today).for(:date) }
+          it { should allow_value(Date.today.beginning_of_month).for(:date) }
         end
       end
 
