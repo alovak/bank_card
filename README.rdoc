@@ -5,19 +5,4 @@
 
 == Description
 
-This gem contains validation of card number with Luhn method, card brand detection (Visa, MasterCard, etc.)
-
-== Examples
-
-  class CreditCard < ActiveRecord::Base
-    include BankCard::Validations
-
-    validates :number, :luhn => true
-    validates_expiration_of :date
-  end
-
-You can get more info from specs
-
-= Licence
-
-released under the MIT license.
+This gem contans methods 
