@@ -5,7 +5,19 @@
 
 == Description
 
-This gem contans methods 
+This gem contains validation methods to check card number with Luhn method and card expiration date.
 
-This gem contains methods to validate card number with Luhn method and card expiration date.
+== Examples
 
+  class CreditCard < ActiveRecord::Base
+    include BankCard::Validations
+
+    validates :number, :luhn => true
+    validates_expiration_of :date
+  end
+
+You can get more info from specs
+
+= Licence
+
+released under the MIT license.
