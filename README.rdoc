@@ -6,3 +6,6 @@
 == Description
 
 This gem contans methods 
+
+This gem contains methods to validate card number with Luhn method and card expiration date.
+
