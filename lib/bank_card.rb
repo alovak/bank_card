@@ -6,6 +6,7 @@ require 'active_support/core_ext/time/calculations'
 require 'active_support/i18n'
 
 require "bank_card/version"
+require "bank_card/brands"
 
 module BankCard
   module Validations
