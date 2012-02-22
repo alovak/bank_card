@@ -11,9 +11,17 @@ This gem contains validation of card number with Luhn method, card brand detecti
 
   class CreditCard < ActiveRecord::Base
     include BankCard::Validations
+    include BankCard::Brands
 
     validates :number, :luhn => true
     validates_expiration_of :date
+
+    before_create :set_brand
+
+    private
+    def set_brand
+      self.brand = detect_brand(number)
+    end
   end
 
 You can get more info from specs
