@@ -5,9 +5,11 @@
 
 == Description
 
-This gem contains validation methods to check card number with Luhn method and card expiration date.
+This gem contains
+* validation methods to check card number with Luhn method, card expiration date
+* brand detection method for Visa, MasterCard, JCB, Discover, Maestro, Diners Club, American Express.
 
-== Examples
+== Example
 
   class CreditCard < ActiveRecord::Base
     include BankCard::Validations
