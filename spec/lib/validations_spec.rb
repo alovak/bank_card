@@ -16,6 +16,7 @@ describe CreditCard do
     describe "number with Luhn algorithm" do
       before { CreditCard.validates :number, :luhn => true }
 
+      it { should_not allow_value('hello').for(:number) }
       it { should_not allow_value('123').for(:number) }
       it { should allow_value('4200000000000000').for(:number) }
     end
