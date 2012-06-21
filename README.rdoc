@@ -1,3 +1,5 @@
+{<img src="https://secure.travis-ci.org/alovak/bank_card.png?branch=master" alt="Build Status" />}[http://travis-ci.org/alovak/bank_card]
+
 = BankCard / CreditCard
 
 * Source:  http://github.com/alovak/bank_card
